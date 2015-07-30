@@ -1,26 +1,9 @@
-<ion-view view-title="Match Find" hide-back-button="true" ng-controller="HomeCtrl" no-scroll>
+<ion-view view-title="Match Find" hide-back-button="true" ng-controller="HomeCtrl">
     <ion-nav-buttons side="right">
         <a class="no-decoration button-clear" href="#/addmoney">
             <i class="icon ion-ios7-plus-empty big"></i>
         </a>
     </ion-nav-buttons>
-    <ion-content ng-controller="CardsCtrl">
-        <swipe-cards>
-            <swipe-card ng-repeat="card in cards" on-destroy="cardDestroyed($index)"
-                        on-card-swipe="cardSwiped($index)">
-                <div ng-controller="CardCtrl">
-                    <div class="title">
-                        {{card.title}}
-                    </div>
-                    <div class="image">
-                        <img ng-src="{{card.image}}" width="200px">
-                    </div>
-                    <div class="button-bar">
-                        <button class="button button-clear button-positive" ng-click="goAway()">Pass</button>
-                        <button class="button button-clear button-positive" ng-click="goAway()">Connect</button>
-                    </div>
-                </div>
-            </swipe-card>
-        </swipe-cards>
+    <ion-content>
     </ion-content>
 </ion-view>
