@@ -7693,20 +7693,21 @@ a.button {
   -webkit-transition-duration: 0s;
   transition-duration: 0s; }
 
-.match-find .profile {
-  background-color: wheat; }
-  .match-find .profile .content {
-    margin: 20px 20px 0 20px; }
-    .match-find .profile .content p.time-label {
-      text-align: center;
-      font-size: 12px; }
-    .match-find .profile .content .image-container img {
-      width: 100%; }
-    .match-find .profile .content .button-container {
-      margin-top: 20px; }
-      .match-find .profile .content .button-container .button.pass {
-        width: 100px;
-        float: left; }
-      .match-find .profile .content .button-container .button.connect {
-        width: 100px;
-        float: right; }
+.match-find {
+  background-color: #D2B48C; }
+  .match-find .profile-card {
+    border-radius: 4px; }
+  .match-find .profile-image {
+    height: 250px;
+    overflow: hidden; }
+  .match-find p.time-label {
+    font-size: 13px;
+    margin-top: 10px;
+    text-align: center;
+    position: relative;
+    top: 20px; }
+  .match-find .passed {
+    background-color: white;
+    position: absolute;
+    top: 4px;
+    right: 4px; }

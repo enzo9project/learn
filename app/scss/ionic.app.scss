@@ -22,31 +22,25 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 @import "www/lib/ionic/scss/ionic";
 
 .match-find {
-  .profile {
-    background-color: wheat;
-    .content {
-      margin: 20px 20px 0 20px;
-      p.time-label{
-        text-align: center;
-        font-size: 12px;
-      }
-      .image-container {
-        //margin: 0 40px;
-        img {
-          width: 100%;
-        }
-      }
-      .button-container{
-        margin-top: 20px;
-        .button.pass{
-          width: 100px;
-          float: left;
-        }
-        .button.connect{
-          width: 100px;
-          float: right;
-        }
-      }
-    }
+  background-color: #D2B48C;
+  .profile-card{
+    border-radius: 4px;
+  }
+  .profile-image{
+    height: 250px;
+    overflow: hidden;
+  }
+  p.time-label{
+    font-size: 13px;
+    margin-top: 10px;
+    text-align: center;
+    position: relative;
+    top: 20px;
+  }
+  .passed{
+    background-color: white;
+    position: absolute;
+    top: 4px;
+    right: 4px;
   }
 }

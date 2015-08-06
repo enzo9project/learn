@@ -4,20 +4,38 @@
             <i class="icon ion-ios7-plus-empty big"></i>
         </a>
     </ion-nav-buttons>
-    <ion-content>
-        <div class="match-find carousel">
-            <div class="profile">
-                <div class="content">
-                    <p class="time-label">Your new friends will be refreshed at 8am every day!</p>
-                    <div class="image-container">
-                        <img src="img/1.jpg">
-                    </div>
-                    <div class="button-container">
-                        <button class="button pass">Pass</button>
-                        <button class="button connect">Connect</button>
-                    </div>
+    <ion-content class="match-find">
+        <p class="time-label">New friends get refreshed at 12am every day!</p>
+        <div class="carousel">
+            <div class="list card profile-card" ng-repeat="p in profiles">
+                <div class="item item-avatar">
+                    <img ng-src="img/{{p.image}}">
+
+                    <h2>Pretty Hate Machine</h2>
+
+                    <p>Nine Inch Nails</p>
                 </div>
+
+                <div class="item item-image profile-image">
+                    <img ng-src="img/{{p.image}}">
+                    <div ng-show="p.passed" class="passed">Passed</div>
+                    <div ng-show="p.connected" class="passed">Connected</div>
+                </div>
+
+                <div class="row">
+                    <button class="button button-clear button-positive col col-50" ng-disabled="p.connected" ng-click="addLabel(0, p)">
+                        Pass
+                    </button>
+                    <button class="button button-clear button-positive col col-50" ng-disabled="p.passed" ng-click="addLabel(1, p)">
+                        Connect
+                    </button>
+                </div>
+                <p>
+                    Your new friends will be refreshed at 8am every day!
+                    Your new friends will be refreshed at 8am every day!
+                    Your new friends will be refreshed at 8am every day!
+                    Your new friends will be refreshed at 8am every day!
+                </p>
             </div>
-        </div>
     </ion-content>
 </ion-view>
