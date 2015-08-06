@@ -1,5 +1,8 @@
 angular.module('starter.controllers', [])
 
-    .controller('HomeCtrl', function ($scope) {
+    .controller('MatchFindCtrl', function ($scope) {
+
+        $('.match-find.carousel').slick({
+        });
     })
 ;

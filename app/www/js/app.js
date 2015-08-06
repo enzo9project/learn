@@ -5,7 +5,7 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic', 'ionic.contrib.ui.cards', 'starter.controllers', 'starter.services'])
+angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
 
     .run(function ($ionicPlatform) {
         $ionicPlatform.ready(function () {
@@ -23,18 +23,6 @@ angular.module('starter', ['ionic', 'ionic.contrib.ui.cards', 'starter.controlle
         });
     })
 
-    .directive('noScroll', function ($document) {
-
-        return {
-            restrict: 'A',
-            link: function ($scope, $element, $attr) {
-
-                $document.on('touchmove', function (e) {
-                    e.preventDefault();
-                });
-            }
-        }
-    })
 
     .config(function ($stateProvider, $urlRouterProvider) {
 
@@ -45,12 +33,12 @@ angular.module('starter', ['ionic', 'ionic.contrib.ui.cards', 'starter.controlle
         $stateProvider
 
             // setup an abstract state for the tabs directive
-            .state('home', {
-                url: '/home',
-                templateUrl: 'templates/home.html'
+            .state('matchFind', {
+                url: '/matchfind',
+                templateUrl: 'templates/matchFind.html'
             });
 
         // if none of the above states are matched, use this as the fallback
-        $urlRouterProvider.otherwise('/home');
+        $urlRouterProvider.otherwise('/matchfind');
 
     });
