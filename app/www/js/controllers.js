@@ -1,5 +1,8 @@
 angular.module('starter.controllers', [])
 
+    .controller('HomeFindCtrl', function ($scope, $timeout) {
+    })
+
     .controller('MatchFindCtrl', function ($scope, $timeout) {
 
         $scope.profiles = [
