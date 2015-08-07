@@ -23,6 +23,41 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
         });
     })
 
+    .directive('tapDetector',function($ionicGesture,$ionicScrollDelegate){
+        return{
+            restrict:'EA',
+            link:function(scope,element){
+                var startX,startY,isDown=false;
+                element.bind("mousedown touchstart", function(e){
+                    e=(e.touches)?e.touches[0]:e;//e.touches[0] is for ios
+                    startX = e.clientX;
+                    startY = e.clientY;
+                    isDown=true;
+                    //console.log("mousedown",startX,startY);
+                });
+
+                element.bind("mousemove touchmove", function(e){
+                    e=(e.touches)?e.touches[0]:e;//e.touches[0] is for ios
+                    if(isDown){
+                        var deltaX = Math.abs(e.clientX - startX);
+                        var deltaY = Math.abs(e.clientY - startY);
+
+                        if(deltaX > deltaY) {
+                            //console.log("horizontal move");
+                            $ionicScrollDelegate.$getByHandle('mainScroll').freezeScroll(true);
+                        }
+                    }
+                });
+
+                element.bind("mouseup touchend", function(e){
+                    isDown=false;
+                    $ionicScrollDelegate.$getByHandle('mainScroll').freezeScroll(false);
+                    //console.log("mouseup touchend");
+                });
+            }
+        }
+    })
+
 
     .config(function ($stateProvider, $urlRouterProvider) {
 

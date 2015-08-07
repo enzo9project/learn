@@ -7706,8 +7706,10 @@ a.button {
     text-align: center;
     position: relative;
     top: 20px; }
-  .match-find .passed {
+  .match-find .connection-label {
     background-color: white;
     position: absolute;
     top: 4px;
     right: 4px; }
+  .match-find p.description {
+    margin: 0 10px; }
