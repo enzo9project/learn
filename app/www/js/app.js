@@ -66,19 +66,22 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
         // Set up the various states which the app can be in.
         // Each state's controller can be found in controllers.js
         $stateProvider
-            // setup an abstract state for the tabs directive
             .state('homeFind', {
                 url: '/homefind',
                 templateUrl: 'templates/homeFind.html'
             })
 
-            // setup an abstract state for the tabs directive
+            .state('messageInBottle', {
+                url: '/messageinbottle',
+                templateUrl: 'templates/messageInBottle.html'
+            })
+
             .state('matchFind', {
                 url: '/matchfind',
                 templateUrl: 'templates/matchFind.html'
             });
 
         // if none of the above states are matched, use this as the fallback
-        $urlRouterProvider.otherwise('/matchfind');
+        $urlRouterProvider.otherwise('/homefind');
 
     });

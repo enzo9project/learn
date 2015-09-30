@@ -7713,3 +7713,23 @@ a.button {
     right: 4px; }
   .match-find p.description {
     margin: 0 10px; }
+
+.message-in-bottle {
+  height: 100%;
+  background: url("../img/messageInBottleBackground2.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat; }
+  .message-in-bottle .scroll {
+    height: 100%; }
+  .message-in-bottle .messages {
+    height: 70%; }
+    .message-in-bottle .messages img {
+      width: auto;
+      height: 50px; }
+    .message-in-bottle .messages .bottle {
+      position: relative;
+      top: 50px;
+      padding: 20px; }
+  .message-in-bottle .my-message {
+    height: 30%; }
