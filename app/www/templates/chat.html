@@ -1,0 +1,34 @@
+<ion-view view-title="Chat" hide-back-button="true" ng-controller="ChatCtrl">
+    <ion-content class="chat">
+        <ion-list>
+            <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="chat in chats" type="item-text-wrap" href="#/chat/{{chat.id}}">
+                <img ng-src="{{chat.face}}">
+                <h2>{{chat.name}}</h2>
+                <p>{{chat.lastText}}</p>
+                <i class="icon ion-chevron-right icon-accessory"></i>
+
+                <ion-option-button class="button-assertive" ng-click="remove(chat)">
+                    Delete
+                </ion-option-button>
+            </ion-item>
+        </ion-list>
+    </ion-content>
+    <div class="tabs tabs-icon-top">
+        <a class="tab-item active">
+            <i class="icon ion-chatbubble"></i>
+            Chat
+        </a>
+        <a class="tab-item">
+            <i class="icon ion-android-person"></i>
+            Contact
+        </a>
+        <a class="tab-item" href="#/homefind">
+            <i class="icon ion-android-person-add"></i>
+            Find
+        </a>
+        <a class="tab-item">
+            <i class="icon ion-card"></i>
+            Profile
+        </a>
+    </div>
+</ion-view>

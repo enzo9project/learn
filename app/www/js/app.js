@@ -13,7 +13,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
             // for form inputs)
             if (window.cordova && window.cordova.plugins && window.cordova.plugins.Keyboard) {
                 cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
-                //cordova.plugins.Keyboard.disableScroll(true);
+                cordova.plugins.Keyboard.disableScroll(true);
 
             }
             if (window.StatusBar) {
@@ -66,6 +66,27 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
         // Set up the various states which the app can be in.
         // Each state's controller can be found in controllers.js
         $stateProvider
+
+            .state('chat', {
+                url: '/chat',
+                templateUrl: 'templates/chat.html'
+            })
+
+            .state('chatDetail', {
+                url: '/chat/:chatId',
+                templateUrl: 'templates/chatDetail.html'
+            })
+
+            //.state('chatDetail', {
+            //    url: '/chat/:chatId',
+            //    views: {
+            //        'chatDetail': {
+            //            templateUrl: 'templates/chatDetail.html',
+            //            controller: 'ChatDetailCtrl'
+            //        }
+            //    }
+            //})
+
             .state('homeFind', {
                 url: '/homefind',
                 templateUrl: 'templates/homeFind.html'
@@ -82,6 +103,6 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
             });
 
         // if none of the above states are matched, use this as the fallback
-        $urlRouterProvider.otherwise('/homefind');
+        $urlRouterProvider.otherwise('/chat');
 
     });

@@ -7722,14 +7722,17 @@ a.button {
   background-repeat: no-repeat; }
   .message-in-bottle .scroll {
     height: 100%; }
+  .message-in-bottle .bottle img {
+    width: auto;
+    height: 50px; }
   .message-in-bottle .messages {
     height: 70%; }
-    .message-in-bottle .messages img {
-      width: auto;
-      height: 50px; }
     .message-in-bottle .messages .bottle {
       position: relative;
       top: 50px;
       padding: 20px; }
   .message-in-bottle .my-message {
     height: 30%; }
+    .message-in-bottle .my-message .bottle img {
+      width: auto;
+      height: 70px; }

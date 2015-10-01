@@ -23,54 +23,62 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 
 .match-find {
   background-color: #D2B48C;
-  .profile-card{
+  .profile-card {
     border-radius: 4px;
   }
-  .profile-image{
+  .profile-image {
     height: 250px;
     overflow: hidden;
   }
-  p.time-label{
+  p.time-label {
     font-size: 13px;
     margin-top: 10px;
     text-align: center;
     position: relative;
     top: 20px;
   }
-  .connection-label{
+  .connection-label {
     background-color: white;
     position: absolute;
     top: 4px;
     right: 4px;
   }
-  p.description{
+  p.description {
     margin: 0 10px;
   }
 }
 
-.message-in-bottle{
+.message-in-bottle {
   height: 100%;
   background: url("../img/messageInBottleBackground2.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  .scroll{
+  .scroll {
     height: 100%;
   }
-  .messages{
-    height: 70%;
-    img{
+  .bottle {
+    img {
       width: auto;
       height: 50px;
     }
-    .bottle{
+  }
+  .messages {
+    height: 70%;
+    .bottle {
       position: relative;
       top: 50px;
       padding: 20px;
     }
   }
-  .my-message{
+  .my-message {
     height: 30%;
+    .bottle {
+      img {
+        width: auto;
+        height: 70px;
+      }
+    }
   }
 
 }
