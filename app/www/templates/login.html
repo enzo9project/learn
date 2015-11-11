@@ -1,7 +1,20 @@
 <ion-view view-title="Login" hide-back-button="true" ng-controller="LoginCtrl">
     <ion-content class="chat">
-        <label>Username</label><input />
+        <label>Email</label><input ng-model="credentials.email"/>
         <br>
-        <label>Password</label><input type="password"/>
+        email is: {{credentials.email}}
+        <label>Password</label><input type="password" ng-model="credentials.password"/>
+        <div ng-show="isRegistering">
+            <label>Confirm Password</label><input type="password" ng-model="confirmPassword"/>
+        </div>
+        <div ng-hide="isRegistering">
+            <button ng-click="loginVerify()">Login</button>
+            <button ng-click="toggleIsRegistering()">Register</button>
+        </div>
+        <div ng-show="isRegistering">
+            <button ng-click="createUser()">Create account</button>
+            <button ng-click="toggleIsRegistering()">Cancel</button>
+        </div>
+        <button ng-click="facebookLogin()">Login via Facebook</button>
     </ion-content>
 </ion-view>

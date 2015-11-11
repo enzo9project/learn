@@ -1,30 +1,77 @@
 angular.module('starter.controllers', [])
 
     //find functions
-    .controller('LoginCtrl', function ($scope, $timeout) {
-        var ref = new Firebase("https://yeemo.firebaseio.com");
+    .controller('LoginCtrl', function ($scope) {
+        var ref = new Firebase("https://mimoapp.firebaseIO.com");
 
-        $scope.loginVerify = function(){
+        $scope.isRegistering = false;
+        $scope.credentials = {
+            email: '',
+            password: '',
+            confirmPassword: ''
+        };
+
+        $scope.facebookLogin = function () {
+            ref.authWithOAuthPopup("facebook", function (error, authData) {
+                if (error) {
+                    console.log("Login Failed!", error);
+                } else {
+                    console.log("Authenticated successfully with payload:", authData);
+                }
+            });
+        }
+
+
+        $scope.loginVerify = function () {
             ref.authWithPassword({
-                email    : "bobtony@firebase.com",
-                password : "correcthorsebatterystaple"
-            }, function(error, authData) { /* Your Code */ }, {
+                email: $scope.credentials.email,
+                password: $scope.credentials.password
+            }, function (error, authData) {
+                console.log('verifying user');
+                clearCredentials();
+                if (error) {
+                    console.log("Login Failed!", error);
+                } else {
+                    console.log("Authenticated successfully with payload:", authData);
+                }
+            }, {
                 remember: "sessionOnly"
             });
         }
 
-        $scope.createUser = function(){
-            ref.authWithPassword({
-                email    : "bobtony@firebase.com",
-                password : "correcthorsebatterystaple"
-            }, function(error, authData) { /* Your Code */ }, {
-                remember: "sessionOnly"
+        $scope.createUser = function () {
+            ref.createUser({
+                email: $scope.credentials.email,
+                password: $scope.credentials.password
+            }, function (error, userData) {
+                console.log('creating a user');
+                clearCredentials();
+                if (error) {
+                    console.log("Error creating user:", error);
+                } else {
+                    console.log("Successfully created user account with uid:", userData.uid);
+                }
             });
         }
+
+        $scope.toggleIsRegistering = function () {
+            $scope.isRegistering = !$scope.isRegistering;
+        }
+
+        function clearCredentials() {
+            console.log('clearing credentials');
+            $scope.credentials = {
+                email: '',
+                password: '',
+                confirmPassword: ''
+            };
+        }
+
+
     })
 
     //chat functions
-    .controller('ChatCtrl', function($scope, Chats, Auth) {
+    .controller('ChatCtrl', function ($scope, Chats, Auth) {
         // With the new view caching in Ionic, Controllers are only called
         // when they are recreated or on app start, instead of every page change.
         // To listen for when this page is active (for example, to refresh data),
@@ -34,7 +81,7 @@ angular.module('starter.controllers', [])
         //});
 
         $scope.chats = Chats.all();
-        $scope.remove = function(chat) {
+        $scope.remove = function (chat) {
             Chats.remove(chat);
         };
         //$scope.login = function() {
@@ -66,7 +113,7 @@ angular.module('starter.controllers', [])
         //});
     })
 
-    .controller('ChatDetailCtrl', function($scope, $stateParams, Chats) {
+    .controller('ChatDetailCtrl', function ($scope, $stateParams, Chats) {
         $scope.chat = Chats.get($stateParams.chatId);
     })
 
@@ -83,22 +130,22 @@ angular.module('starter.controllers', [])
             scope: $scope
         });
 
-        $scope.openPopover = function($event) {
+        $scope.openPopover = function ($event) {
             $scope.popover.show($event);
         };
-        $scope.closePopover = function() {
+        $scope.closePopover = function () {
             $scope.popover.hide();
         };
         //Cleanup the popover when we're done with it!
-        $scope.$on('$destroy', function() {
+        $scope.$on('$destroy', function () {
             $scope.popover.remove();
         });
         // Execute action on hide popover
-        $scope.$on('popover.hidden', function() {
+        $scope.$on('popover.hidden', function () {
             // Execute action
         });
         // Execute action on remove popover
-        $scope.$on('popover.removed', function() {
+        $scope.$on('popover.removed', function () {
             // Execute action
         });
 
@@ -124,11 +171,11 @@ angular.module('starter.controllers', [])
             }
         ];
 
-        $timeout(function(){
+        $timeout(function () {
             $('.match-find .carousel').slick({});
         });
 
-        $scope.addLabel = function(index, profile){
+        $scope.addLabel = function (index, profile) {
             index == 0 ? profile.passed = true : profile.connected = true;
         }
     })
