@@ -1,7 +1,7 @@
 angular.module('starter.services', [])
 
 .factory("Auth", function($firebaseAuth) {
-  var usersRef = new Firebase("https//yeemo.firebaseIO.com/users");
+  var usersRef = new Firebase("https//mimoapp.firebaseIO.com/users");
   return $firebaseAuth(usersRef);
 })
 

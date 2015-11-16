@@ -1,7 +1,7 @@
 angular.module('starter.controllers', [])
 
     //find functions
-    .controller('LoginCtrl', function ($scope) {
+    .controller('LoginCtrl', function ($scope, $window) {
         var ref = new Firebase("https://mimoapp.firebaseIO.com");
 
         $scope.isRegistering = false;
@@ -17,8 +17,28 @@ angular.module('starter.controllers', [])
                     console.log("Login Failed!", error);
                 } else {
                     console.log("Authenticated successfully with payload:", authData);
+                    //$location.path('/chat');
+                    goToHomePage();
                 }
             });
+            //Auth.$authWithOAuthRedirect("facebook").then(function (authData) {
+            //    // User successfully logged in
+            //    console.log('successfully logged into facebook');
+            //    $location.path('/chat');
+            //}, {
+            //    remember: "sessionOnly"
+            //}).catch(function (error) {
+            //    if (error.code === "TRANSPORT_UNAVAILABLE") {
+            //        Auth.$authWithOAuthPopup("facebook").then(function (authData) {
+            //            // User successfully logged in. We can log to the console
+            //            // since we’re using a popup here
+            //            console.log(authData);
+            //        });
+            //    } else {
+            //        // Another error occurred
+            //        console.log(error);
+            //    }
+            //});
         }
 
 
@@ -33,6 +53,7 @@ angular.module('starter.controllers', [])
                     console.log("Login Failed!", error);
                 } else {
                     console.log("Authenticated successfully with payload:", authData);
+                    goToHomePage();
                 }
             }, {
                 remember: "sessionOnly"
@@ -50,8 +71,13 @@ angular.module('starter.controllers', [])
                     console.log("Error creating user:", error);
                 } else {
                     console.log("Successfully created user account with uid:", userData.uid);
+                    goToHomePage();
                 }
             });
+        }
+
+        $scope.logout = function(){
+            ref.unauth();
         }
 
         $scope.toggleIsRegistering = function () {
@@ -65,6 +91,13 @@ angular.module('starter.controllers', [])
                 password: '',
                 confirmPassword: ''
             };
+        }
+
+        function goToHomePage () {
+            var landingUrl = "http://" + $window.location.host + "/#/chat";
+            $window.location.href = landingUrl;
+            $window.open(landingUrl, "_self");
+            console.log('called');
         }
 
 
