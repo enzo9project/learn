@@ -154,6 +154,22 @@ angular.module('starter.controllers', [])
     .controller('HomeFindCtrl', function ($scope, $timeout) {
     })
 
+    .controller('MessageBoxCtrl', function ($scope, BottleMessages, ConnectionMessages) {
+        $scope.chats = $scope.isConenctions ? ConnectionMessages.all() : BottleMessages.all();
+        $scope.connectionMessages = ConnectionMessages.all();
+        $scope.bottleMessages = BottleMessages.all();
+        $scope.isConenctions = true;
+        $scope.viewTitle = $scope.isConenctions ? 'Connections' : 'Bottles';
+        $scope.toggleIsConnections = function () {
+            $scope.isConenctions = !$scope.isConenctions;
+            $scope.viewTitle = $scope.isConenctions ? 'Connections' : 'Bottles';
+        }
+        $scope.remove = function (chat) {
+            var chats = $scope.isConenctions ? ConnectionMessages : BottleMessages;
+            chats.remove(chat);
+        };
+    })
+
     .controller('MessageInBottleCtrl', function ($scope, $ionicPopover) {
 
         // .fromTemplate() method

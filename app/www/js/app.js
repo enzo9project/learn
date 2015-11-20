@@ -97,6 +97,11 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
                 templateUrl: 'templates/homeFind.html'
             })
 
+            .state('messageBox', {
+                url: '/messagebox',
+                templateUrl: 'templates/messageBox.html'
+            })
+
             .state('messageInBottle', {
                 url: '/messageinbottle',
                 templateUrl: 'templates/messageInBottle.html'
