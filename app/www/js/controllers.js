@@ -186,6 +186,8 @@ angular.module('starter.controllers', [])
 
     .controller('MatchFindCtrl', function ($scope, $timeout) {
 
+        $scope.aboutMe = true;
+
         $scope.profiles = [
             {
                 image: '1.jpg',
@@ -205,11 +207,17 @@ angular.module('starter.controllers', [])
         ];
 
         $timeout(function () {
-            $('.match-find .carousel').slick({});
+            $('.match-find .carousel').slick({
+                dots: true
+            });
         });
 
-        $scope.addLabel = function (index, profile) {
-            index == 0 ? profile.passed = true : profile.connected = true;
+        $scope.notAboutMe = function(){
+            $scope.aboutMe = false;
+        }
+
+        $scope.isAboutMe = function(){
+            $scope.aboutMe = true;
         }
     })
 ;

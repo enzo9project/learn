@@ -7693,26 +7693,44 @@ a.button {
   -webkit-transition-duration: 0s;
   transition-duration: 0s; }
 
-.match-find {
-  background-color: #D2B48C; }
-  .match-find .profile-card {
-    border-radius: 4px; }
-  .match-find .profile-image {
-    height: 250px;
-    overflow: hidden; }
-  .match-find p.time-label {
-    font-size: 13px;
-    margin-top: 10px;
-    text-align: center;
-    position: relative;
-    top: 20px; }
-  .match-find .connection-label {
-    background-color: white;
-    position: absolute;
-    top: 4px;
-    right: 4px; }
-  .match-find p.description {
-    margin: 0 10px; }
+.match-find .profile-card {
+  border-radius: 4px; }
+.match-find .profile-image {
+  height: 250px;
+  overflow: hidden; }
+.match-find .time-label {
+  margin-top: 10px;
+  text-align: center;
+  position: relative;
+  top: 20px; }
+.match-find .connection-label {
+  background-color: white;
+  position: absolute;
+  top: 4px;
+  right: 4px; }
+.match-find .chat-icon {
+  position: absolute;
+  top: 200px;
+  color: grey;
+  right: 14px;
+  background: white;
+  width: 70px;
+  height: 40px;
+  border-radius: 95px;
+  border: 1px solid grey; }
+  .match-find .chat-icon i {
+    font-size: 35px; }
+.match-find .chat-icon:active {
+  background-color: #cccccc; }
+.match-find .profile-info {
+  margin: 10px; }
+  .match-find .profile-info .profile-detail {
+    margin: 0 10px;
+    text-align: center; }
+.match-find .message-me {
+  margin: 0 10px; }
+.match-find .slick-dots {
+  bottom: 0; }
 
 .message-in-bottle {
   height: 100%;
@@ -7736,3 +7754,6 @@ a.button {
     .message-in-bottle .my-message .bottle img {
       width: auto;
       height: 70px; }
+
+.margin-0-10 {
+  margin: 0 10px; }

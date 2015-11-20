@@ -22,7 +22,7 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 @import "www/lib/ionic/scss/ionic";
 
 .match-find {
-  background-color: #D2B48C;
+  //background-color: #D2B48C;
   .profile-card {
     border-radius: 4px;
   }
@@ -30,8 +30,8 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
     height: 250px;
     overflow: hidden;
   }
-  p.time-label {
-    font-size: 13px;
+  .time-label {
+    //font-size: 13px;
     margin-top: 10px;
     text-align: center;
     position: relative;
@@ -43,8 +43,35 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
     top: 4px;
     right: 4px;
   }
-  p.description {
+  .chat-icon {
+    position: absolute;
+    top: 200px;
+    color: grey;
+    right: 14px;
+    background: white;
+    width: 70px;
+    height: 40px;
+    border-radius: 95px;
+    border: 1px solid grey;
+    i{
+      font-size: 35px;
+    }
+  }
+  .chat-icon:active {
+    background-color: #cccccc;
+  }
+  .profile-info {
+    margin: 10px;
+    .profile-detail {
+      margin: 0 10px;
+      text-align: center;
+    }
+  }
+  .message-me {
     margin: 0 10px;
+  }
+  .slick-dots {
+    bottom: 0;
   }
 }
 
@@ -80,5 +107,9 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
       }
     }
   }
+}
 
+//Share
+.margin-0-10 {
+  margin: 0 10px;
 }
