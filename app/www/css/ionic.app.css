@@ -7754,6 +7754,8 @@ a.button {
     .message-in-bottle .my-message .bottle img {
       width: auto;
       height: 70px; }
+  .message-in-bottle .time-label {
+    margin: 0 50px; }
 
 .margin-0-10 {
   margin: 0 10px; }
