@@ -170,6 +170,51 @@ angular.module('starter.controllers', [])
         };
     })
 
+    .controller('MemoCtrl', function ($scope) {
+        $scope.newMemo = {
+            word: '',
+            meaning: '',
+            notes: []
+        }
+        //edit word
+        $scope.isEditingWord = true;
+        $scope.startEditingWord = function(){
+            $scope.isEditingWord = true;
+        }
+        $scope.endEditingWord = function(){
+
+            if($scope.newMemo.word.replace(/\s+/g, '') == ''){
+                $scope.newMemo.word = null;
+                $scope.isEditingWord = true;
+            }
+            else{
+                $scope.isEditingWord = false;
+            }
+        }
+        //edit meaning
+        $scope.isEditingMeaning = true;
+        $scope.startEditingMeaning = function(){
+            $scope.isEditingMeaning = true;
+        }
+        $scope.endEditingMeaning = function(){
+            if($scope.newMemo.meaning.replace(/\s+/g, '') == ''){
+                $scope.newMemo.meaning = null;
+                $scope.isEditingMeaning = true;
+            }
+            else{
+                $scope.isEditingMeaning = false;
+            }
+        }
+        //edit notes
+        $scope.isEditingNotes = true;
+        $scope.startEditingNotes = function(){
+            $scope.isEditingNotes = true;
+        }
+        $scope.endEditingNotes = function(){
+            $scope.isEditingNotes = $scope.newMemo.notes == [] ? true : false;
+        }
+    })
+
     .controller('MessageInBottleCtrl', function ($scope, $ionicPopover) {
 
         // .fromTemplate() method

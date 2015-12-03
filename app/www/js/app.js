@@ -110,6 +110,16 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
             .state('matchFind', {
                 url: '/matchfind',
                 templateUrl: 'templates/matchFind.html'
+            })
+
+            .state('memoHome', {
+                url: '/memohome',
+                templateUrl: 'templates/memoHome.html'
+            })
+
+            .state('memoAdd', {
+                url: '/memoadd',
+                templateUrl: 'templates/memoAdd.html'
             });
 
         // if none of the above states are matched, use this as the fallback

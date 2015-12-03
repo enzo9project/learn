@@ -53,7 +53,7 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
     height: 40px;
     border-radius: 95px;
     border: 1px solid grey;
-    i{
+    i {
       font-size: 35px;
     }
   }
@@ -107,8 +107,17 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
       }
     }
   }
-  .time-label{
+  .time-label {
     margin: 0 50px;
+  }
+}
+
+.memo-add {
+  .memo-options-list {
+
+    .item {
+      border-style: none;
+    }
   }
 }
 
