@@ -114,9 +114,33 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 
 .memo-add {
   .memo-options-list {
-
     .item {
       border-style: none;
+    }
+    i {
+      margin-right: 2px;
+      &.ion-android-bulb {
+        position: relative;
+        top: -3px;
+        margin-right: 2px;
+      }
+    }
+    label.new-note-add {
+      //margin-bottom: 10px;
+    }
+    .button.button-full {
+      position: relative;
+      top: 500px;
+    }
+  }
+}
+
+.memo-home {
+  .no-memo {
+    text-align: center;
+    margin-top: 40px;
+    a {
+      text-decoration: none;
     }
   }
 }

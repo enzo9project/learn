@@ -2,38 +2,45 @@
     <ion-content class="memo-add">
         <div class="list memo-options-list">
             <div class="item">
-                <input type="text" placeholder="New word" ng-blur="endEditingWord()" ng-model="newMemo.word" ng-show="isEditingWord"/>
-                <label ng-hide="isEditingWord" ng-click="startEditingWord()">{{newMemo.word}}</label>
+                <label>New Word</label>
+                <hr>
+                <label class="item item-input">
+                    <input type="text" placeholder="New word" ng-model="newMemo.word">
+                </label>
             </div>
             <div class="item">
                 <label>Meaning</label>
                 <hr>
-                <input type="text" placeholder="Meaning" ng-blur="endEditingMeaning()" ng-model="newMemo.meaning" ng-show="isEditingMeaning"/>
-                <label ng-hide="isEditingMeaning" ng-click="startEditingMeaning()">{{newMemo.meaning}}</label>
+                <label class="item item-input">
+                    <input type="text" placeholder="Meaning" ng-model="newMemo.meaning">
+                </label>
             </div>
             <div class="item">
-                <label>Meaning</label>
+                <label>Notes</label>
                 <hr>
-                <input type="text" placeholder="Notes"/>
+                <list>
+                    <ul ng-repeat="note in newMemo.notes">
+                        <label class="item item-input">
+                            <i class="icon ion-android-bulb"></i>
+                            <input type="text" ng-model="note.content">
+                        </label>
+                    </ul>
+                    <label class="item item-input new-note-add">
+                        <input type="text" placeholder="New note" ng-blur="addToNotes()"
+                               ng-model="tempMemo.newNoteItem"/>
+                    </label>
+                </list>
+            </div>
+            <div class="item">
+                <label>Speak</label>
+                <hr>
+                <label class="item"><i class="icon ion-mic-a"></i>Hold to record</label>
             </div>
         </div>
+        <div>
+            <button class="button button-full button-positive" ng-disabled="noWord" ng-click="addWord()">
+                Add Word
+            </button>
+        </div>
     </ion-content>
-    <div class="tabs tabs-icon-top">
-        <a class="tab-item" href="#/chat">
-            <i class="icon ion-chatbubble"></i>
-            Chat
-        </a>
-        <a class="tab-item" href="#/homefind">
-            <i class="icon ion-android-person-add"></i>
-            Find
-        </a>
-        <a class="tab-item">
-            <i class="icon ion-card"></i>
-            Profile
-        </a>
-        <a class="tab-item active">
-            <i class="icon ion-clipboard"></i>
-            Memo
-        </a>
-    </div>
 </ion-view>
