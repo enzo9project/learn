@@ -1,0 +1,50 @@
+<ion-view view-title="Match Find" ng-controller="MatchFindCtrl">
+    <ion-content class="match-find">
+        <div class="margin-0-10">
+            <button class="button button-outline button-positive button-block time-label">
+                15h01m
+            </button>
+        </div>
+        <div class="carousel">
+            <div class="list card profile-card" ng-repeat="p in profiles">
+                <div class="item item-avatar">
+                    <img ng-src="img/{{p.image}}">
+
+                    <h2>Pretty Hate Machine</h2>
+
+                    <p>Nine Inch Nails</p>
+                </div>
+
+                <div class="item item-image profile-image">
+                    <img ng-src="img/{{p.image}}">
+                    <!--<div ng-show="p.passed" class="connection-label">Passed</div>-->
+                    <!--<div ng-show="p.connected" class="connection-label">Connected</div>-->
+                    <div class="chat-icon">
+                        <a class="tab-item">
+                            <i class="icon ion-mic-a"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="profile-info">
+                    <div class="button-bar">
+                        <button class="button" ng-click="isAboutMe()" ng-class="{active: aboutMe}">About me</button>
+                        <button class="button" ng-click="notAboutMe()" ng-class="aboutMe ? '' : 'active'">My learning</button>
+                    </div>
+                    <div class="about-me profile-detail" ng-show="aboutMe">
+                        <div class="row"><span class="col">Gender</span><span class="col">icon</span></div>
+                        <div class="row"><span class="col">Age</span><span class="col">35</span></div>
+                        <div class="row"><span class="col">Location</span><span class="col">Sydney, Australia</span></div>
+                        <div class="row"><span class="col">Nationality</span><span class="col">Australia</span></div>
+                    </div>
+                    <div class="my-learning profile-detail" ng-hide="aboutMe">
+                        <div class="row"><span class="col">German</span><span class="col">Lvl 25</span></div>
+                        <div class="row"><span class="col">Japanese</span><span class="col">Lvl 1</span></div>
+                        <div class="row"><span class="col">Title</span><span class="col">The Prodigy</span></div>
+                    </div>
+                    <div class="message-me">
+                        <button class="button button-block">Message me!</button>
+                    </div>
+                </div>
+            </div>
+    </ion-content>
+</ion-view>

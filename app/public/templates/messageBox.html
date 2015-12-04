@@ -1,0 +1,51 @@
+<ion-view view-title={{viewTitle}} ng-controller="MessageBoxCtrl">
+    <ion-nav-buttons side="right">
+        <button class="button" ng-click="toggleIsConnections()">
+            <i class="icon ion-arrow-swap"></i>
+        </button>
+    </ion-nav-buttons>
+    <ion-content class="message-box">
+        <ion-list ng-show="isConenctions">
+            <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="chat in connectionMessages" type="item-text-wrap">
+                <img ng-src="{{chat.face}}">
+                <h2>{{chat.name}}</h2>
+                <p>{{chat.lastText}}</p>
+                <i class="icon ion-chevron-right icon-accessory"></i>
+
+                <ion-option-button class="button-assertive" ng-click="remove(chat)">
+                    Delete
+                </ion-option-button>
+            </ion-item>
+        </ion-list>
+        <ion-list ng-hide="isConenctions">
+            <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="chat in bottleMessages" type="item-text-wrap">
+                <img ng-src="{{chat.face}}">
+                <h2>{{chat.name}}</h2>
+                <p>{{chat.lastText}}</p>
+                <i class="icon ion-chevron-right icon-accessory"></i>
+
+                <ion-option-button class="button-assertive" ng-click="remove(chat)">
+                    Delete
+                </ion-option-button>
+            </ion-item>
+        </ion-list>
+    </ion-content>
+    <div class="tabs tabs-icon-top">
+        <a class="tab-item" href="#/chat">
+            <i class="icon ion-chatbubble"></i>
+            Chat
+        </a>
+        <a class="tab-item active" href="#/homefind">
+            <i class="icon ion-android-person-add"></i>
+            Find
+        </a>
+        <a class="tab-item">
+            <i class="icon ion-card"></i>
+            Profile
+        </a>
+        <a class="tab-item">
+            <i class="icon ion-clipboard"></i>
+            Memo
+        </a>
+    </div>
+</ion-view>

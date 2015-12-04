@@ -1,0 +1,26 @@
+<ion-view view-title="Login" hide-back-button="true" ng-controller="LoginCtrl">
+    <ion-content class="chat">
+        <div class="list">
+            <label class="item item-input">
+                <input type="email" ng-model="credentials.email"  placeholder="Email"/>
+            </label>
+            <label class="item item-input">
+                <input type="password" ng-model="credentials.password" placeholder="Password"/>
+            </label>
+            <div ng-show="isRegistering">
+                <label class="item item-input">
+                    <input type="password" ng-model="credentials.confirmPassword" placeholder="Confirm Password"/>
+                </label>
+            </div>
+            <div ng-hide="isRegistering">
+                <button class="button"  ng-click="loginVerify()">Login</button>
+                <button class="button"  ng-click="toggleIsRegistering()">Register</button>
+            </div>
+            <div ng-show="isRegistering">
+                <button class="button" ng-click="createUser()">Create account</button>
+                <button class="button" ng-click="toggleIsRegistering()">Cancel</button>
+            </div>
+            <button class="button button-positive button-full"  ng-click="facebookLogin()">Login via Facebook</button>
+        </div>
+    </ion-content>
+</ion-view>
