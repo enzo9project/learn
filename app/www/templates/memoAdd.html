@@ -34,7 +34,11 @@
             <div class="item">
                 <label>Speak</label>
                 <hr>
-                <label class="item"><i class="icon ion-mic-a"></i>Hold to record</label>
+                <!--<label class="item" ng-click="startRecording()"><i class="icon ion-mic-a"></i>Hold to record</label>-->
+                <label class="item" ng-click="recorderRecord()"><i class="icon ion-mic-a"></i>Hold to record</label>
+                <label class="item" ng-click="recorderStop()"><i class="icon ion-mic-a"></i>Hold to stop</label>
+                <!--<label class="item" ng-click="playRecord()"><i class="icon ion-mic-a"></i>Hold to play</label>-->
+                <label class="item" ng-click="recorderPlayback()"><i class="icon ion-mic-a"></i>Hold to play</label>
             </div>
         </div>
         <div>

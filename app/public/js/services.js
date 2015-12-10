@@ -116,4 +116,27 @@ angular.module('starter.services', [])
       return null;
     }
   };
+})
+.factory('Memos', function() {
+  // Might use a resource here that returns a JSON array
+
+  // Some fake testing data
+  var memos = [];
+
+  return {
+    all: function() {
+      return memos;
+    },
+    remove: function(memo) {
+      memos.splice(memos.indexOf(memo), 1);
+    },
+    get: function() {
+      for (var i = 0; i < memos.length; i++) {
+        if (memos[i].id === parseInt(memoId)) {
+          return memos[i];
+        }
+      }
+      return null;
+    }
+  };
 });

@@ -7757,5 +7757,23 @@ a.button {
   .message-in-bottle .time-label {
     margin: 0 50px; }
 
+.memo-add .memo-options-list .item {
+  border-style: none; }
+.memo-add .memo-options-list i {
+  margin-right: 2px; }
+  .memo-add .memo-options-list i.ion-android-bulb {
+    position: relative;
+    top: -3px;
+    margin-right: 2px; }
+.memo-add .memo-options-list .button.button-full {
+  position: relative;
+  top: 500px; }
+
+.memo-home .no-memo {
+  text-align: center;
+  margin-top: 40px; }
+  .memo-home .no-memo a {
+    text-decoration: none; }
+
 .margin-0-10 {
   margin: 0 10px; }

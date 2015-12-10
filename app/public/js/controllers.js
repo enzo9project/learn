@@ -76,7 +76,7 @@ angular.module('starter.controllers', [])
             });
         }
 
-        $scope.logout = function(){
+        $scope.logout = function () {
             ref.unauth();
         }
 
@@ -93,7 +93,7 @@ angular.module('starter.controllers', [])
             };
         }
 
-        function goToHomePage () {
+        function goToHomePage() {
             var landingUrl = "http://" + $window.location.host + "/#/chat";
             $window.location.href = landingUrl;
             $window.open(landingUrl, "_self");
@@ -170,6 +170,63 @@ angular.module('starter.controllers', [])
         };
     })
 
+    .controller('MemoCtrl', function ($scope, $cordovaCapture, Memos, $location) {
+        $scope.newMemo = {
+            word: '',
+            meaning: '',
+            notes: []
+        }
+        $scope.tempMemo = {
+            newNoteItem: null
+        }
+        $scope.noWord = true;
+        $scope.memos = Memos.all();
+        $scope.addToNotes = function () {
+            console.log('called add note');
+            if (!$scope.tempMemo.newNoteItem || $scope.tempMemo.newNoteItem.replace(/\s+/g, '') == '') {
+                $scope.tempMemo.newNoteItem = null;
+                console.log('note is empty');
+            }
+            else {
+                $scope.newMemo.notes.push({
+                    content: $scope.tempMemo.newNoteItem + '',
+                    isEditing: false
+                });
+                $scope.tempMemo.newNoteItem = null;
+                console.log('note added');
+                console.log('notes: ', $scope.newMemo.notes);
+            }
+        }
+        $scope.captureAudio = function() {
+            var options = { limit: 3, duration: 10 };
+
+            $cordovaCapture.captureAudio(options).then(function(audioData) {
+                console.log('audio data: ', audioData);
+            }, function(err) {
+                // An error occurred. Show a message to the user
+            });
+        }
+        $scope.addWord = function(){
+            console.log('add word');
+            $scope.memos.push($scope.newMemo);
+            $location.path('/memohome');
+        }
+        $scope.$watch(
+            // This function returns the value being watched. It is called for each turn of the $digest loop
+            function() { return $scope.newMemo.word; },
+            // This is the change listener, called when the value returned from the above function changes
+            function(newValue, oldValue) {
+                console.log('watch called');
+                if ( newValue !== oldValue ) {
+                    // Only increment the counter if the value changed
+                    $scope.noWord = newValue.length >= 1 ? newValue.replace(/\s+/g, '') < 1 : true;
+
+                    console.log('noWord?', $scope.noWord);
+                }
+            }
+        );
+    })
+
     .controller('MessageInBottleCtrl', function ($scope, $ionicPopover) {
 
         // .fromTemplate() method
@@ -181,7 +238,7 @@ angular.module('starter.controllers', [])
 
         $scope.popover = $ionicPopover.fromTemplateUrl('templates/popoverMessageInBottle.html', {
             scope: $scope
-        }).then(function(popover){
+        }).then(function (popover) {
             $scope.popover = popover;
         });
 
@@ -234,11 +291,11 @@ angular.module('starter.controllers', [])
             });
         });
 
-        $scope.notAboutMe = function(){
+        $scope.notAboutMe = function () {
             $scope.aboutMe = false;
         }
 
-        $scope.isAboutMe = function(){
+        $scope.isAboutMe = function () {
             $scope.aboutMe = true;
         }
     })

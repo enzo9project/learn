@@ -5,7 +5,7 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', 'firebase'])
+angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', 'firebase', 'ngCordova'])
 
     .run(function ($ionicPlatform) {
         $ionicPlatform.ready(function () {
@@ -110,6 +110,16 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
             .state('matchFind', {
                 url: '/matchfind',
                 templateUrl: 'templates/matchFind.html'
+            })
+
+            .state('memoHome', {
+                url: '/memohome',
+                templateUrl: 'templates/memoHome.html'
+            })
+
+            .state('memoAdd', {
+                url: '/memoadd',
+                templateUrl: 'templates/memoAdd.html'
             });
 
         // if none of the above states are matched, use this as the fallback

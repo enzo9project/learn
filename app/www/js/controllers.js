@@ -170,7 +170,7 @@ angular.module('starter.controllers', [])
         };
     })
 
-    .controller('MemoCtrl', function ($scope, $cordovaCapture, Memos, $location) {
+    .controller('MemoCtrl', function ($scope, Memos, $location) {
         $scope.newMemo = {
             word: '',
             meaning: '',
@@ -197,27 +197,94 @@ angular.module('starter.controllers', [])
                 console.log('notes: ', $scope.newMemo.notes);
             }
         }
-        $scope.captureAudio = function() {
-            var options = { limit: 3, duration: 10 };
-
-            $cordovaCapture.captureAudio(options).then(function(audioData) {
-                console.log('audio data: ', audioData);
-            }, function(err) {
-                // An error occurred. Show a message to the user
-            });
-        }
-        $scope.addWord = function(){
+        //$scope.captureAudio = function () {
+        //    var options = {limit: 3, duration: 10};
+        //
+        //    $cordovaCapture.captureAudio(options).then(function (audioData) {
+        //        console.log('audio data: ', audioData);
+        //    }, function (err) {
+        //        // An error occurred. Show a message to the user
+        //    });
+        //}
+        $scope.addWord = function () {
             console.log('add word');
             $scope.memos.push($scope.newMemo);
             $location.path('/memohome');
         }
+        // Record audio
+        //$scope.startRecording = function () {
+        //    //var time = new Date().getTime(),
+        //    var time = new Date().getTime(),
+        //        src = "../src/audios/123.mp3",
+        //        //src = "../src/audios/"+new Date().getTime()+".mp3",
+        //        media = $cordovaMedia.newMedia(src);
+        //
+        //    // Record audio
+        //    media.startRecord();
+        //
+        //    return time;
+        //}
+
+        $scope.startRecording = function () {
+            console.log('called record audio');
+            console.log('media object: '+ Media);
+            var src = "/Users/kyle.kan/WebstormProjects/learn/app/www/audio/test.wav";
+            var mediaRec = new Media(src,
+                // success callback
+                function () {
+                    alert("recordAudio():Audio Success");
+                },
+
+                // error callback
+                function (err) {
+                    alert("recordAudio():Audio Error: " + err.message);
+                });
+
+            // Record audio
+            mediaRec.startRecord();
+        }
+
+        $scope.stopRecording = function (time) {
+            var src = "audios/test.m4a";
+            var mediaRec = new Media(src,
+                // success callback
+                function () {
+                    alert("stop Audio():Audio Success");
+                },
+
+                // error callback
+                function (err) {
+                    alert("stop Audio():Audio Error: " + err.code);
+                });
+
+            mediaRec.stopRecord();
+        }
+
+        $scope.playRecord = function (time) {
+            var src = "http://download.wavetlan.com/SVV/Media/HTTP/WAV/Media-Convert/Media-Convert_test1_Alaw_Mono_VBR_8SS_16000Hz.wav";
+            var mediaRec = new Media(src,
+                // success callback
+                function () {
+                    console.log("playAudio():Audio Success");
+                },
+
+                // error callback
+                function (err) {
+                    console.log("playAudio():Audio Error: " + err.message);
+                });
+
+            mediaRec.play();
+        }
+
         $scope.$watch(
             // This function returns the value being watched. It is called for each turn of the $digest loop
-            function() { return $scope.newMemo.word; },
+            function () {
+                return $scope.newMemo.word;
+            },
             // This is the change listener, called when the value returned from the above function changes
-            function(newValue, oldValue) {
+            function (newValue, oldValue) {
                 console.log('watch called');
-                if ( newValue !== oldValue ) {
+                if (newValue !== oldValue) {
                     // Only increment the counter if the value changed
                     $scope.noWord = newValue.length >= 1 ? newValue.replace(/\s+/g, '') < 1 : true;
 
@@ -225,6 +292,40 @@ angular.module('starter.controllers', [])
                 }
             }
         );
+
+        //recorder
+        //$scope.recorder = new Object;
+        $scope.recorderStop = function() {
+            console.log('===========================\nstop recording');
+            window.plugins.audioRecorderAPI.stop(function(msg) {
+                // success
+                alert('ok: ' + msg);
+            }, function(msg) {
+                // failed
+                alert('ko: ' + msg);
+            });
+        }
+        $scope.recorderRecord = function() {
+            console.log('===========================\nstart recording');
+            console.log('api: '+window.plugins.audioRecorderAPI);
+            window.plugins.audioRecorderAPI.record(function(msg) {
+                // complete
+                alert('ok: ' + msg);
+            }, function(msg) {
+                // failed
+                alert('ko: ' + msg);
+            }, 30); // record 30 seconds
+        }
+        $scope.recorderPlayback = function() {
+            console.log('===========================\nplay recording');
+            window.plugins.audioRecorderAPI.playback(function(msg) {
+                // complete
+                alert('ok: ' + msg);
+            }, function(msg) {
+                // failed
+                alert('ko: ' + msg);
+            });
+        }
     })
 
     .controller('MessageInBottleCtrl', function ($scope, $ionicPopover) {
